@@ -1,7 +1,5 @@
 FROM node:20.10.0-alpine3.18 AS build
 
-ARG BFF_HOST
-
 WORKDIR /app
 
 COPY package.json package-lock.json ./
@@ -9,8 +7,6 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
-
-RUN echo "VITE_BFF_HOST=${BFF_HOST}" > .env
 
 RUN npm run build
 
