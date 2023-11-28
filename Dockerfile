@@ -1,4 +1,6 @@
-FROM node:latest AS build
+FROM node:20.10.0-alpine3.18 AS build
+
+ARG BFF_HOST
 
 WORKDIR /app
 
@@ -8,9 +10,9 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN echo "VITE_BFF_HOST=${BFF_HOST}" > .env
 
-RUN echo "REACT_APP_ORDER_BFF_HOST=api" > ./dist/.env
+RUN npm run build
 
 FROM nginx:latest
 
