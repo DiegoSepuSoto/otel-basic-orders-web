@@ -8,9 +8,9 @@ RUN npm install
 
 COPY . .
 
-RUN echo "REACT_APP_ORDER_BFF_HOST=/api" > .env
-
 RUN npm run build
+
+RUN echo "REACT_APP_ORDER_BFF_HOST=api" > ./dist/.env
 
 FROM nginx:latest
 
