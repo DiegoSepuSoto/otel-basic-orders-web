@@ -16,7 +16,7 @@ function App() {
     const getOrderInfo = async (): Promise<void> => {
         try {
             setIsRequestLoading(true);
-            const response = await fetch('http://localhost:8082/order?orderID=abc123');
+            const response = await fetch(`${process.env.REACT_APP_ORDER_BFF_HOST}/order?orderID=abc123`);
 
             if (!response.ok) {
                 setOrderInfo("Hubo un error con la información");
